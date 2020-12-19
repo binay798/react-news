@@ -1,0 +1,40 @@
+.news {
+    position: relative;
+    // border-radius: 4px;
+    overflow: hidden;
+    & > img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        color: white;
+        padding: 1rem;
+        background-image: linear-gradient(to bottom,rgba(0,0,0,0.12),rgba(0,0,0,0.8));
+        transition: all .2s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        cursor: pointer;
+
+        
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 400;
+        }
+    }
+
+    &:hover > &__overlay {
+        background-image: linear-gradient(to bottom,rgba(0,0,0,0.12),rgba(0,0,0,0.7));
+
+    }
+
+    
+}

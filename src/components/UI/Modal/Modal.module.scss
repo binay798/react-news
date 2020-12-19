@@ -1,0 +1,32 @@
+.modal {
+    padding: 4rem 2rem;
+    border-radius: 5px;
+    box-shadow: 0 1rem 2rem rgba(0,0,0,0.12);
+    background-color: white;
+    position: fixed;
+    top: 5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 200;
+    min-width: 25rem;
+    animation: moveDown .4s cubic-bezier(.24,-0.26,.73,1.54);
+
+    & > span {
+        position: absolute;
+        top: .5rem;
+        right: 1rem;
+        color: rgb(160, 53, 15);
+        cursor: pointer;
+    }
+}
+
+@keyframes moveDown {
+    0% {
+        transform: translate(-50%,-100%);
+    }
+
+    100% {
+        transform: translate(-50%,0%);
+
+    }
+}

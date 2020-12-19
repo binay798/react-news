@@ -1,0 +1,47 @@
+.notification {
+    position: fixed;
+    min-width: 35rem;
+    top: 3rem;
+    right: 3rem;
+    padding: 1rem 2rem;
+    background-color: white;
+    box-shadow:  0 1rem 2rem rgba(0, 0, 0, 0.274);
+    border-radius: 5px;
+    overflow: hidden;
+    font-style: italic;
+    display: flex;
+    justify-content: space-between;
+    z-index: 100;
+    animation: moveLeft .7s cubic-bezier(.29,-0.36,.73,1.54);
+
+    & > span:nth-child(2) {
+        color: rgb(201, 70, 23);
+        font-style: normal;
+        cursor: pointer;
+
+        &:hover {
+            color: lighten(rgb(201, 70, 23),10)
+        }
+    }
+
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 6px;
+        height: 100%;
+        background-color: rgb(94, 204, 94);
+    }
+}
+
+@keyframes moveLeft {
+    0% {
+        transform: translateX(250%);
+    }
+
+    100% {
+        transition: translateX(0%);
+    }
+}

@@ -1,0 +1,16 @@
+.news {
+    margin: 0;
+    margin-bottom: 1rem;
+    display: flex;
+    cursor: pointer;
+
+    &:hover > span {
+        color: rgb(165, 87, 59);
+    }
+    
+    span {
+        font-size: 1.3rem;
+        text-decoration: none;
+        padding: 1rem
+    }
+}
