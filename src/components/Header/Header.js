@@ -15,7 +15,7 @@ function Header(props) {
 
                 let res = await axios.get('/api/v1/users/logout');
                 dispatch({type: 'LOGOUT'})
-                dispatch({type: 'SET_NOTIFICATION',payload: 'User logged out'})
+                dispatch({type: 'SET_NOTIFICATION',payload: res.data.data})
                 setLoading(false);
 
             } catch(err) {

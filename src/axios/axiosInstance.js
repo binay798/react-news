@@ -7,7 +7,7 @@ const instance = axios.create({
 
 export const backendApi = axios.create({
     withCredentials: true,
-    baseURL: 'http://localhost:8000',
+    baseURL: 'https://react-news-backend.herokuapp.com/',
 })
 
 export default instance

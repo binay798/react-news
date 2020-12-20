@@ -12,7 +12,7 @@ function Notification() {
             
         },5000)
 
-        return interval;
+        return () => clearTimeout(interval);
     },[store.notification.status,dispatch])
 
     const notificationStyle = {

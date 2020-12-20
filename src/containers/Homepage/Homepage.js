@@ -5,7 +5,7 @@ import classes from './Homepage.module.scss';
 import { biden } from './../../assets/images/images'
 import NewsTertiary from '../../components/NewsTertiary/NewsTertiary';
 import axios, { backendApi } from './../../axios/axiosInstance';
-
+import Skeleton from 'react-loading-skeleton'
 import { useStore } from './../../store/store'
 import { withRouter } from 'react-router-dom'
 
@@ -32,6 +32,7 @@ function Homepage(props) {
                     }})
                 }
                 if(loginThroughCookie.data.status !== 'fail') {
+                    
                     dispatch({type: 'AUTH_USER', payload: loginThroughCookie.data.user})
                 }
             } catch(err) {
@@ -43,26 +44,30 @@ function Homepage(props) {
 
 
 
-
     return (
         <div className={`${classes.homepage}`}>
 
             
             <h4>Welcome to News Portal</h4>
+            {!globalStore.topNews ? <NewsPrimarySkeletonLoader /> : null}
+
             <div className={classes.homepage__top}>
                 {globalStore.topNews && globalStore.topNews.map((news,id) => {
                     return (<NewsPrimary key={id} {...news} />)
                 })}
 
+                {/* show skeleton if result is not shown */}
+
             </div>
+
 
             <div className={classes.homepage__middle}>
                 <h4>News</h4>
-
                 <div className={classes.homepage__middle__container}>
                     {globalStore.remainingNews && globalStore.remainingNews.map((news,id) => {
                         return (<NewsSecondary key={id} {...news} />)
                     })}
+                    {!globalStore.remainingNews ? <NewsSecondarySkeletonLoader /> : null}
 
                 </div>
             </div>
@@ -122,4 +127,35 @@ function Homepage(props) {
     )
 }
 
+
+function NewsPrimarySkeletonLoader() {
+    
+    return (
+        <div  className={classes.loader}>
+            {Array(5).fill().map((item, id) => {
+                return <Skeleton key={id}  />
+            })}
+        </div>
+    )
+}
+
+function NewsSecondarySkeletonLoader() {
+    return (
+        <>
+            {Array(3).fill().map((item,id) => {
+                return (
+                    <div>
+                        <Skeleton height={210} style={{marginBottom: '1rem'}} />
+                        <Skeleton height={35} style={{marginBottom: '2rem'}}/>
+                        <Skeleton />
+                        <Skeleton />
+                        <Skeleton />
+                        <Skeleton />
+
+                    </div>
+                )
+            })}
+        </>
+    )
+}
 export default withRouter(Homepage);

@@ -11,6 +11,9 @@ function Details(props) {
     const goToLoginPage = () => {
         props.history.push('/accounts/login')
     }
+    const goToHomepage = () => {
+        props.history.push('/')
+    }
     React.useEffect(() => {
         window.scrollTo(0,0);
 
@@ -20,7 +23,7 @@ function Details(props) {
     },[globalStore.auth])
     return (
         <>
-        <Modal show={showModal} opacity={0.95}>
+        <Modal show={showModal} opacity={0.95} hide={goToHomepage}>
             <h2>Login to see details</h2>
             <button className="btn btn-primary w-100" onClick={goToLoginPage} style={{fontSize: '1.6rem',marginTop: '2rem'}}>
                     Login
